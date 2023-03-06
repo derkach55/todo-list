@@ -6,27 +6,27 @@
   <h1>TODO List <a href="{% url 'todo_list:task-create' %}" class="btn btn-info link-to-page">Create Task</a></h1>
   {% for task in task_list %}
     <div class="task-item">
-        <strong>
-          {{ task.content }}
-          {% if task.status %}
-          <span class="text-success">Done</span>
-          {% else %}
-            <span class="text-danger">Not done</span>
-          {% endif %}
-        </strong><br>
-        <form action="{% url 'todo_list:change-status' task.pk %}" method="post" class="form-control-color">
-          {% csrf_token %}
-          {% if not task.status %}
-            <input type="submit" value="Complete" class="btn btn-success link-to-page">
-          {% else %}
-            <input type="submit" value="Undone" class="btn btn-danger link-to-page">
-          {% endif %}
-        </form>
-        Created at: {{ task.created_at }}<br>
-        Tags: {% for tag in task.tags.all %}{{ tag }} {% endfor %}
-        <a href="{% url 'todo_list:task-update' task.pk %}">Update</a>
-        <a href="{% url 'todo_list:task-delete' task.pk %}">Delete</a>
-      </div>
+      <strong>
+        {{ task.content }}
+        {% if task.status %}
+        <span class="text-success">Done</span>
+        {% else %}
+          <span class="text-danger">Not done</span>
+        {% endif %}
+      </strong><br>
+      <form action="{% url 'todo_list:change-status' task.pk %}" method="post" class="form-control-color">
+        {% csrf_token %}
+        {% if not task.status %}
+          <input type="submit" value="Complete" class="btn btn-success link-to-page">
+        {% else %}
+          <input type="submit" value="Undone" class="btn btn-danger link-to-page">
+        {% endif %}
+      </form>
+      Created at: {{ task.created_at }}<br>
+      Tags: {% for tag in task.tags.all %}{{ tag }} {% endfor %}
+      <a href="{% url 'todo_list:task-update' task.pk %}">Update</a>
+      <a href="{% url 'todo_list:task-delete' task.pk %}">Delete</a>
+    </div>
   {% empty %}
     There are no tasks!
   {% endfor %}
