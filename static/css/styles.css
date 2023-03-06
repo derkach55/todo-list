@@ -1,0 +1,13 @@
+body {
+    margin: 20px;
+}
+
+.link-to-page {
+    float: right;
+    margin: 0 2px 0 2px;
+}
+
+.task-item {
+    margin: 10px;
+    padding: 5px;
+}
